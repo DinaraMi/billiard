@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Canvas, { Ball } from './Canvas';
 
-function App() {
+const App: React.FC = () => {
+  const [balls, setBalls] = useState<Ball[]>([
+    { id: 1, x: 100, y: 100, radius: 20, color: 'red', vx: 1, vy: 1 },
+    { id: 2, x: 200, y: 200, radius: 30, color: 'blue', vx: -1, vy: -1 },
+    { id: 3, x: 300, y: 300, radius: 40, color: 'black', vx: -1, vy: -1 },
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Canvas balls={balls} setBalls={setBalls} />
     </div>
   );
-}
+};
 
 export default App;
